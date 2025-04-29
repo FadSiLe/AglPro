@@ -1,0 +1,33 @@
+@startuml
+class Categories {
+  -id : int
+  -nom : String
+  -description : String
+  +afficherDetails()
+}
+
+class Article {
+  -id : int
+  -designation : String
+  -prix : double
+  -quantite : int
+  +calculerPrixTotal()
+}
+
+class Stock {
+  -articles : List<Article>
+  +ajouterArticle()
+  +retirerArticle()
+  +verifierStockFaible()
+}
+
+class Client {
+  -panier : List<Article>
+  +ajouterAuPanier()
+  +afficherPanier()
+}
+
+Stock "1" *-- "0..*" Article
+Article "1" --> "1" Categories
+Client "1" --> "0..*" Article
+@enduml
